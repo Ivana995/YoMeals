@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 
 import Pages.LocationPopUpPage;
 import Pages.LoginPage;
+import Pages.NotificationSistemPage;
 
 	
 	public abstract class BasicTest {
@@ -18,6 +19,7 @@ import Pages.LoginPage;
 		protected WebDriver driver;
 		protected LocationPopUpPage popUpPage;
 		protected LoginPage loginPage;
+		protected NotificationSistemPage notification;
 		protected WebDriverWait waiter;
 		protected JavascriptExecutor js;
 		
@@ -34,6 +36,7 @@ import Pages.LoginPage;
 			js = (JavascriptExecutor) driver;
 			popUpPage = new LocationPopUpPage (driver,waiter,js);
 			loginPage = new LoginPage (driver,waiter,js);
+			notification = new NotificationSistemPage (driver,waiter,js);
 			
 		}
 

@@ -17,9 +17,14 @@ public class ProfileTest extends BasicTest {
 	//	popUpPage.closeDialog();
 		
 		
-		loginPage.goToPage("guest-user/login-form");
-		popUpPage.closeDialog();
-		loginPage.logIn("customer@dummyid.com", "12345678a");
+	//	loginPage.goToPage("guest-user/login-form");
+	//	popUpPage.closeDialog();
+	//	loginPage.logIn("customer@dummyid.com", "12345678a");
+		
+		notification.goToPage("member/account");
+		notification.getMessage();
+		notification.getMessageText();
+		notification.waitUntilNotificationDisapear();
 	
 	}
 
