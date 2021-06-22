@@ -17,10 +17,6 @@ public abstract class BasicPage {
 
 	}
 
-	String baseUrl = "http://demo.yo-meals.com/";
-
-	public void goToPage(String relativeUrl) {
-		driver.get(baseUrl + relativeUrl);
-	}
+	
 
 }
