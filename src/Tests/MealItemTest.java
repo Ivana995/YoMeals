@@ -44,7 +44,7 @@ public class MealItemTest extends BasicTest {
 		String favoriteMessage = notification.getMessageText();
 		Assert.assertTrue(favoriteMessage.contains("Product has been added to your favorites."),
 				"Message is not displayed");
-	}
+	} 
 	
 
 	@Test(priority = 2)
@@ -57,7 +57,7 @@ public class MealItemTest extends BasicTest {
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		XSSFSheet sheet = wb.getSheet("Meals");
 
-		for (int i = 1; i < sheet.getLastRowNum(); i++) {
+		for (int i = 1;  i<6; i++) {
 			XSSFRow row = sheet.getRow(i);
 			String meal = row.getCell(0).getStringCellValue();
 			int quantity = (int) row.getCell(1).getNumericCellValue();
