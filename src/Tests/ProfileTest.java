@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class ProfileTest extends BasicTest {
 	
-	@Test(priority = 0)
+	@Test(priority = 1)
 	public void editProfile() throws InterruptedException {
 
 		driver.navigate().to(baseUrl + "guest-user/login-form");
@@ -18,7 +18,7 @@ public class ProfileTest extends BasicTest {
 		String loginMessage = notification.getMessageText();
 		Assert.assertTrue(loginMessage.contains("Login Successfull"), "Message for successful log in is not displayed");
 
-		driver.get("http://demo.yo-meals.com/member/profile");
+		driver.navigate().to(baseUrl + "member/profile");
 		profilePage.changeInformations("Tom", "Willson", "Downtown Street 15", "2322333", "23122", "United States",
 				"Alabama", "Ashville");
 		profilePage.getSaveBtn().click();
@@ -31,7 +31,7 @@ public class ProfileTest extends BasicTest {
 
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void changeProfilImg() throws InterruptedException, IOException {
 
 		driver.navigate().to(baseUrl + "guest-user/login-form");

@@ -18,14 +18,12 @@ public class MealPage extends BasicPage {
 	}
 
 	public WebElement getAddToCart() {
-		return this.driver.findElement(
-				By.xpath("//div[@class='d-flex align-items-center justify-content-between flex-lg--col']/a"));
+		return this.driver.findElement(By.xpath("//div[@class='d-flex align-items-center justify-content-between flex-lg--col']/a"));
 	}
 
 	public void AddMealToCart(int quantity) throws InterruptedException {
 		String qt = Integer.toString(quantity);
 		Thread.sleep(5000);
-		this.getQuantity();
 		this.getQuantity().sendKeys(Keys.DELETE);
 		this.getQuantity().sendKeys(qt);
 		this.getAddToCart().click();

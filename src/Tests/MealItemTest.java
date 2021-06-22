@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class MealItemTest extends BasicTest {
 	
 	
-	@Test(priority = 0)
+	@Test(priority = 1)
 	public void addMealToCart() throws InterruptedException {
 		driver.navigate().to(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
 		popUpPage.closeDialog();
@@ -30,7 +30,7 @@ public class MealItemTest extends BasicTest {
 		Assert.assertTrue(addedMeal.contains("Meal Added To Cart"), "Message is not displayed");
 	}
 	 
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void addMealToFavorite() {
 		driver.navigate().to(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
 		popUpPage.closeDialog();
@@ -47,7 +47,7 @@ public class MealItemTest extends BasicTest {
 	} 
 	
 
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void clearCart() throws IOException, InterruptedException {
 		driver.navigate().to(baseUrl + "meals");
 		popUpPage.closeDialog();
@@ -75,5 +75,5 @@ public class MealItemTest extends BasicTest {
 		Assert.assertTrue(deleteMessage.contains("All meals removed from Cart successfully"),
 				"Message is not displayed");
 
-	}
+	} 
 }
