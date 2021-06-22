@@ -14,7 +14,7 @@ public class LocationPopUpPage extends BasicPage {
 	}
 	
 	public WebElement getLocationHeader () {
-		return this.driver.findElement(By.xpath("//*[@class=\"location-search-wrapper\"]"));
+		return this.driver.findElement(By.xpath("//*[@class=\"location-selector\"]/a"));
 
 	}
 	
@@ -43,6 +43,7 @@ public class LocationPopUpPage extends BasicPage {
 	}
 	
 	public void setLocation (String locationName) {
+		this.getLocationHeader().click();
 		this.getKeyword().click();
 		String locationValue = this.getLocationItem(locationName).getAttribute("data-value");
 		js.executeScript("arguments[0].value=arguments[1]", getLocationInput(), locationValue);

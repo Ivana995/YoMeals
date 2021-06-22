@@ -31,14 +31,4 @@ public class LoginPage extends BasicPage {
 		this.getPassword().sendKeys(password);
 		this.getSubmitBtn().click();
 	}
-	
-	
-
-/* Login Page:
-get metode za sve potrebne elemente
-metodu koja prijavljuje korisnika na sistem - kao parametri se prosleđuju imejl i lozinka */
-	
-	
-
-
 }
