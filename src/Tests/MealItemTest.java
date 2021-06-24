@@ -24,6 +24,7 @@ public class MealItemTest extends BasicTest {
 		Assert.assertTrue(errorMessage.contains("The Following Errors Occurred:"), "Message is not displayed");
 		Assert.assertTrue(errorMessage.contains("Please Select Location"), "Message is not displayed");
 		notification.waitUntilNotificationDisapear();
+		popUpPage.getLocationHeader().click();
 		popUpPage.setLocation("City Center - Albany");
 		mealPage.AddMealToCart(3);
 		String addedMeal = notification.getMessageText();
@@ -31,15 +32,17 @@ public class MealItemTest extends BasicTest {
 	}
 	 
 	@Test(priority = 2)
-	public void addMealToFavorite() {
+	public void addMealToFavorite() throws InterruptedException {
 		driver.navigate().to(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
 		popUpPage.closeDialog();
 		mealPage.addToFavorite();
+		Thread.sleep(3000);
 		String loginMessage = notification.getMessageText();
 		Assert.assertTrue(loginMessage.contains("Please login first!"), "Message is not displayed");
 		driver.navigate().to(baseUrl + "guest-user/login-form");
 		loginPage.logIn("customer@dummyid.com", "12345678a");
 		driver.navigate().to(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
+		Thread.sleep(3000);
 		mealPage.addToFavorite();
 		String favoriteMessage = notification.getMessageText();
 		Assert.assertTrue(favoriteMessage.contains("Product has been added to your favorites."),
@@ -51,6 +54,7 @@ public class MealItemTest extends BasicTest {
 	public void clearCart() throws IOException, InterruptedException {
 		driver.navigate().to(baseUrl + "meals");
 		popUpPage.closeDialog();
+		popUpPage.getLocationHeader().click();
 		popUpPage.setLocation("City Center - Albany");
 		File file = new File("data/Data (3).xlsx");
 		FileInputStream fis = new FileInputStream(file);
@@ -62,9 +66,9 @@ public class MealItemTest extends BasicTest {
 			String meal = row.getCell(0).getStringCellValue();
 			int quantity = (int) row.getCell(1).getNumericCellValue();
 			driver.navigate().to(meal);
+			Thread.sleep(3000);
 			mealPage.AddMealToCart(quantity);
 			String addedMessage = notification.getMessageText();
-			SoftAssert softAssert = new SoftAssert();
 			softAssert.assertTrue(addedMessage.contains("Meal Added To Cart"), "Message is not displayed");
 			softAssert.assertAll();
 

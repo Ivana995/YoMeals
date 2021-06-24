@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import Pages.AuthPage;
 import Pages.CartSummaryPage;
@@ -24,6 +25,7 @@ import Pages.LoginPage;
 import Pages.MealPage;
 import Pages.NotificationSistemPage;
 import Pages.ProfilePage;
+import Pages.SearchResultPage;
 
 	
 	public abstract class BasicTest {
@@ -38,9 +40,11 @@ import Pages.ProfilePage;
 		protected AuthPage authPage;
 		protected MealPage mealPage;
 		protected CartSummaryPage cartSummary;
+		protected SearchResultPage searchResultPage;
 		protected String baseUrl = "http://demo.yo-meals.com/";
 		protected String email = "customer@dummyid.com";
 		protected String password = "12345678a";
+		protected SoftAssert softAssert;
 
 		@BeforeMethod
 		public void setup() {
@@ -59,6 +63,8 @@ import Pages.ProfilePage;
 			authPage = new AuthPage (driver,waiter,js);
 			mealPage = new MealPage (driver,waiter,js);
 			cartSummary = new CartSummaryPage (driver,waiter,js);
+			searchResultPage = new SearchResultPage (driver,waiter,js);
+			SoftAssert softAssert = new SoftAssert();
 			
 		}
 
@@ -72,7 +78,7 @@ import Pages.ProfilePage;
 			FileHandler.copy(source, new File("screenshots/" + results.getName() + "--" + fileName));
 		}
 		
-		this.driver.quit();
+	      this.driver.quit();
 
 	}
 }
